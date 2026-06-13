@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix+ - Streaming Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Netflix Logo Animation Overlay -->
+    <div id="netflix-intro" class="netflix-intro">
+        <div class="netflix-logo">
+            <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="80" font-weight="bold" fill="#E50914">
+                    N
+                </text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="netflix-n">N</span>etflix+
+            </div>
+            
+            <div class="nav-search">
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    class="search-input" 
+                    placeholder="Search movies, shows..."
+                    autocomplete="off"
+                >
+                <i class="fas fa-search search-icon"></i>
+                <div id="search-suggestions" class="search-suggestions"></div>
+            </div>
+
+            <div class="nav-menu">
+                <a href="#" class="nav-link active" data-section="home">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="#" class="nav-link" data-section="trending">
+                    <i class="fas fa-fire"></i> Trending
+                </a>
+                <a href="#" class="nav-link" data-section="favorites">
+                    <i class="fas fa-heart"></i> <span class="fav-count">0</span>
+                </a>
+            </div>
+
+            <div class="nav-controls">
+                <button id="theme-toggle" class="theme-toggle" title="Toggle Dark/Light Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="menu-toggle" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Banner Section -->
+        <section class="hero-section" id="hero-section">
+            <div class="swiper hero-swiper">
+                <div class="swiper-wrapper" id="hero-wrapper">
+                    <!-- Hero slides will be dynamically added here -->
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev hero-prev"></div>
+                <div class="swiper-button-next hero-next"></div>
+            </div>
+            <div class="hero-overlay"></div>
+        </section>
+
+        <!-- Netflix Intro Animation -->
+        <div class="netflix-intro-text">
+            <h2>Welcome to Netflix+</h2>
+            <p>Discover amazing movies and shows</p>
+        </div>
+
+        <!-- Continue Watching Section -->
+        <section class="content-section" id="continue-watching">
+            <div class="section-header">
+                <h2><i class="fas fa-clock"></i> Continue Watching</h2>
+                <a href="#" class="view-all">View All</a>
+            </div>
+            <div class="movies-grid" id="continue-watching-grid">
+                <!-- Skeleton loaders will appear here -->
+            </div>
+        </section>
+
+        <!-- Trending Now Section -->
+        <section class="content-section" id="trending-section">
+            <div class="section-header">
+                <h2><i class="fas fa-fire"></i> Trending Now</h2>
+                <a href="#" class="view-all">View All</a>
+            </div>
+            <div class="movies-grid" id="trending-grid">
+                <!-- Movie cards will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Popular Movies Section -->
+        <section class="content-section" id="popular-section">
+            <div class="section-header">
+                <h2><i class="fas fa-star"></i> Popular Movies</h2>
+                <a href="#" class="view-all">View All</a>
+            </div>
+            <div class="movies-grid" id="popular-grid">
+                <!-- Movie cards will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Top Rated Section -->
+        <section class="content-section" id="toprated-section">
+            <div class="section-header">
+                <h2><i class="fas fa-crown"></i> Top Rated</h2>
+                <a href="#" class="view-all">View All</a>
+            </div>
+            <div class="movies-grid" id="toprated-grid">
+                <!-- Movie cards will be loaded here -->
+            </div>
+        </section>
+
+        <!-- New Releases Section -->
+        <section class="content-section" id="newreleases-section">
+            <div class="section-header">
+                <h2><i class="fas fa-sparkles"></i> New Releases</h2>
+                <a href="#" class="view-all">View All</a>
+            </div>
+            <div class="movies-grid" id="newreleases-grid">
+                <!-- Movie cards will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="content-section" id="categories-section">
+            <div class="section-header">
+                <h2><i class="fas fa-th"></i> Browse by Category</h2>
+            </div>
+            <div class="categories-grid" id="categories-grid">
+                <!-- Categories will be loaded here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Movie Details Modal -->
+    <div id="movie-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-poster">
+                    <img id="modal-poster-img" src="" alt="Movie Poster">
+                    <button class="play-button" id="play-button">
+                        <i class="fas fa-play"></i> Play Trailer
+                    </button>
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-title"></h2>
+                    <div class="modal-meta">
+                        <span class="rating" id="modal-rating"></span>
+                        <span class="year" id="modal-year"></span>
+                        <span class="duration" id="modal-duration"></span>
+                    </div>
+                    <p class="modal-description" id="modal-description"></p>
+                    <div class="modal-genres" id="modal-genres"></div>
+                    <div class="modal-actions">
+                        <button class="btn btn-primary" id="add-to-favorites-modal">
+                            <i class="fas fa-heart"></i> Add to Favorites
+                        </button>
+                        <button class="btn btn-secondary" id="add-to-watchlist-modal">
+                            <i class="fas fa-plus"></i> Add to Watchlist
+                        </button>
+                    </div>
+                    <div class="modal-links" id="modal-links"></div>
+                    <div class="continue-watching-input">
+                        <label for="watching-progress">Continue from (%):</label>
+                        <input type="range" id="watching-progress" min="0" max="100" value="0">
+                        <button class="btn btn-small" id="save-progress-btn">Save Progress</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Trailer Modal -->
+    <div id="video-modal" class="modal">
+        <div class="modal-content video-modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="video-container">
+                <iframe id="video-iframe" width="100%" height="600" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Favorites Modal -->
+    <div id="favorites-modal" class="modal">
+        <div class="modal-content favorites-modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="favorites-container">
+                <h2>My Favorites</h2>
+                <div class="favorites-grid" id="favorites-grid">
+                    <!-- Favorite movies will be loaded here -->
+                </div>
+                <div class="empty-favorites" id="empty-favorites" style="display: none;">
+                    <i class="fas fa-heart-broken"></i>
+                    <p>No favorites yet. Start adding your favorite movies!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Skeleton -->
+    <template id="skeleton-template">
+        <div class="skeleton-card">
+            <div class="skeleton skeleton-poster"></div>
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton skeleton-meta"></div>
+        </div>
+    </template>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <p>Netflix+ is a modern streaming platform UI clone built with HTML, CSS, and JavaScript. Perfect for showcasing frontend development skills.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Trending</a></li>
+                        <li><a href="#">My Favorites</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Netflix+. All rights reserved. This is a portfolio project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/favorites.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
