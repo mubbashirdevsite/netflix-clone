@@ -274,8 +274,8 @@ This project is open source and available under the MIT License.
 
 For questions or suggestions:
 - Create an issue on GitHub
-- Contact: [your-email@example.com]
-- Portfolio: [your-portfolio-link]
+- Contact: mubhashirdev.site@gmail.com
+- Portfolio: mubbashirdev.site
 
 ## 🎓 Learning Resources
 
